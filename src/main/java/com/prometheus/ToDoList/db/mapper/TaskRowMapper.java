@@ -12,11 +12,11 @@ public class TaskRowMapper implements RowMapper <Task> {
     public Task mapRow(ResultSet resultSet, int i) throws SQLException {
         Task task = new Task();
         task.setId(resultSet.getInt("id"));
+        task.setUserId(resultSet.getInt("userId"));
         task.setName(resultSet.getString("name"));
+        task.setStatus(resultSet.getInt("status"));
         task.setCategory(resultSet.getString("category"));
         task.setDescription(resultSet.getString("description"));
-        task.setStatus(resultSet.getInt("status"));
-        task.setUserId(resultSet.getInt("userId"));
         task.setCreatedAt(resultSet.getTimestamp("createdAt"));
 
         return task;

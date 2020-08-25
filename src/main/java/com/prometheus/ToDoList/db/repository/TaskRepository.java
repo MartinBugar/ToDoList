@@ -28,7 +28,7 @@ public class TaskRepository  {
 
 
     public List <Task> getAll (){
-        final String sql = "select * from user";
+        final String sql = "select * from task";
         return jdbcTemplate.query(sql,taskRowMapper);
     }
 

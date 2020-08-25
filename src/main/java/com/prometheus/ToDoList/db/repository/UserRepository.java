@@ -7,6 +7,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
+import org.springframework.stereotype.Component;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -14,6 +15,8 @@ import java.sql.SQLException;
 import java.sql.Types;
 import java.util.List;
 
+
+@Component
 public class UserRepository {
     private final JdbcTemplate jdbcTemplate;
     private final UserRowMapper userRowMapper = new UserRowMapper();

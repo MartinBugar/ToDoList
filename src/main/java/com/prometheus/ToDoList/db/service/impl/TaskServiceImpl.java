@@ -3,9 +3,11 @@ package com.prometheus.ToDoList.db.service.impl;
 import com.prometheus.ToDoList.db.repository.TaskRepository;
 import com.prometheus.ToDoList.db.service.api.TaskService;
 import com.prometheus.ToDoList.domain.Task;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class TaskServiceImpl implements TaskService {
     private final TaskRepository taskRepository;
 
@@ -37,4 +39,5 @@ public class TaskServiceImpl implements TaskService {
 //    public void update(Integer id, UpdateTaskRequest updateTaskRequest) {
 //
 //    }
+
 }

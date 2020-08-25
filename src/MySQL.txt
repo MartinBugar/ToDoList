@@ -1,0 +1,35 @@
+CREATE SCHEMA `todolist` DEFAULT CHARACTER SET utf8 ;
+
+CREATE TABLE `todolist`.`user` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(100) NOT NULL,
+  `surname` VARCHAR(100) NOT NULL,
+  `nickname` VARCHAR(100) NOT NULL,
+  `email` VARCHAR(100) NOT NULL,
+  `age` INT NULL DEFAULT NULL,
+  `password` VARCHAR(100) NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+CREATE TABLE `todolist`.`task` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `userId` INT NOT NULL,
+  `name` VARCHAR(100) NOT NULL,
+  `status` INT NOT NULL,
+  `category` VARCHAR(100) NOT NULL,
+  `description` VARCHAR(100) NOT NULL,
+  `createdAt` DATETIME NOT NULL,
+  PRIMARY KEY (`id`));
+
+  ALTER TABLE `todolist`.`task`
+  ADD INDEX `user_idx` (`userId` ASC) VISIBLE;
+  ;
+  ALTER TABLE `todolist`.`task`
+  ADD CONSTRAINT `user`
+    FOREIGN KEY (`userId`)
+    REFERENCES `todolist`.`user` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION;
+

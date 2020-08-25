@@ -17,7 +17,7 @@ public class User {
     @NonNull
     private String surname;
 
-    @Nullable
+    @NonNull
     private String nickName;
 
     @NonNull
@@ -31,7 +31,7 @@ public class User {
 
     public User (){}
 
-    public User(@NonNull String name, @NonNull String surname, @Nullable String nickName, @NonNull String email, @Nullable Integer age, @NonNull String password) {
+    public User(@NonNull String name, @NonNull String surname, @NonNull String nickName, @NonNull String email, @Nullable Integer age, @NonNull String password) {
         this.name = name;
         this.surname = surname;
         this.nickName = nickName;

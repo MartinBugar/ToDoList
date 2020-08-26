@@ -1,6 +1,7 @@
 package com.prometheus.ToDoList.controller;
 
 import com.prometheus.ToDoList.db.service.api.UserService;
+import com.prometheus.ToDoList.domain.Task;
 import com.prometheus.ToDoList.domain.User;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -52,6 +53,17 @@ public class UserController {
        } else {
            return ResponseEntity.status(HttpStatus.PRECONDITION_FAILED).body("User with id : " + id + "does not exist");
        }
+    }
+
+    @PatchMapping("{id}")
+    public ResponseEntity updateUser (@PathVariable("id") int id, @RequestBody User user){
+        if (userService.get(id) != null){
+            user.setId(id);
+            userService.update(id,user);
+            return ResponseEntity.ok().build();
+        }else {
+            return ResponseEntity.status(HttpStatus.PRECONDITION_FAILED).body("User with id: " + id + "does not exist");
+        }
     }
 
 

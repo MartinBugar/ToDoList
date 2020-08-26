@@ -1,6 +1,7 @@
 package com.prometheus.ToDoList.db.repository;
 
 import com.prometheus.ToDoList.db.mapper.UserRowMapper;
+import com.prometheus.ToDoList.domain.Task;
 import com.prometheus.ToDoList.domain.User;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -78,10 +79,10 @@ public class UserRepository {
             jdbcTemplate.update(sql,id);
     }
 
-
-//    public User update (User user, Integer id){
-//
-//    }
+    public void update (Integer id, User user){
+        final String sql = "update user set name = ?,surname = ?,nickname = ?,email = ?,age = ?,password = ? where id = ? ";
+        jdbcTemplate.update(sql, user.getName(),user.getSurname(),user.getNickName(),user.getEmail(),user.getAge(),user.getPassword(),id);
+    }
 
 
 

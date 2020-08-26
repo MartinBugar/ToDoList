@@ -66,11 +66,14 @@ public class TaskRepository  {
         }
     }
 
-
     public void delete (Integer id){
         final String sql = "delete from task where id = ? " ;
         jdbcTemplate.update(sql,id);
     }
 
+    public void update (Integer id, Task task){
+        final String sql = "update task set name = ?,status = ?,category = ?,description = ? where id = ? ";
+        jdbcTemplate.update(sql, task.getName(),task.getStatus(),task.getCategory(),task.getDescription(),id);
+    }
 
 }

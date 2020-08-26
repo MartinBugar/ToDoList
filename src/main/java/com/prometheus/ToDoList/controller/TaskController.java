@@ -56,4 +56,16 @@ public class TaskController {
         }
     }
 
+    @PatchMapping("{id}")
+    public ResponseEntity updateTask (@PathVariable("id") int id, @RequestBody Task task){
+        if (taskService.get(id) != null){
+            task.setId(id);
+            taskService.update(id,task);
+            return ResponseEntity.ok().build();
+        }else {
+            return ResponseEntity.status(HttpStatus.PRECONDITION_FAILED).body("Task with id: " + id + "dows not exist");
+        }
+    }
+
+
 }

@@ -14,7 +14,7 @@ public interface TaskService {
 
     void delete(Integer id); // vymaze task na zaklade jeho id
 
-   // void update(Integer id, UpdateTaskRequest updateTaskRequest);
+    void update(Integer id, Task task);
 
 
 

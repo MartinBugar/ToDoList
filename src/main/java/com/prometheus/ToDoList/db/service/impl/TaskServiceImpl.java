@@ -35,9 +35,10 @@ public class TaskServiceImpl implements TaskService {
         taskRepository.delete(id);
     }
 
-//    @Override
-//    public void update(Integer id, UpdateTaskRequest updateTaskRequest) {
-//
-//    }
+    @Override
+    public void update(Integer id, Task task) {
+        taskRepository.update(id, task);
+    }
+
 
 }

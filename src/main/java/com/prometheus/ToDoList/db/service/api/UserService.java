@@ -14,5 +14,7 @@ public interface UserService {
 
     void delete(Integer id);
 
+//    User updateUserWithId (User user, Integer id);
+
 
 }

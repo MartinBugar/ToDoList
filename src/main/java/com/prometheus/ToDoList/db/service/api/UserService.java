@@ -11,4 +11,8 @@ public interface UserService {
     User get(Integer id); // vrati customera na zaklade id
 
     Integer add(User user); // prida usera a vrati jeho id
+
+    void delete(Integer id);
+
+
 }

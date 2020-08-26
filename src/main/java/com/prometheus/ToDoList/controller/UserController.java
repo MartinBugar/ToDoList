@@ -44,4 +44,17 @@ public class UserController {
         return new ResponseEntity<>(users,HttpStatus.OK);
     }
 
+    @DeleteMapping("{id}")
+    public ResponseEntity deleteUser (@PathVariable("id") int id){
+       if (userService.get(id) != null){
+           userService.delete(id);
+           return ResponseEntity.ok().build();
+       } else {
+           return ResponseEntity.status(HttpStatus.PRECONDITION_FAILED).body("User with id : " + id + "does not exist");
+       }
+    }
+
+
+
+
 }

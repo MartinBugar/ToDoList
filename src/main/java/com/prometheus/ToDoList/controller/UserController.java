@@ -62,7 +62,7 @@ public class UserController {
             userService.update(id,user);
             return ResponseEntity.ok().build();
         }else {
-            return ResponseEntity.status(HttpStatus.PRECONDITION_FAILED).body("User with id: " + id + "does not exist");
+            return ResponseEntity.status(HttpStatus.PRECONDITION_FAILED).body("User with id: " + id + "  does not exist");
         }
     }
 

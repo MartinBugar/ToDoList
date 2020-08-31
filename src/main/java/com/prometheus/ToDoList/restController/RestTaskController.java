@@ -1,4 +1,4 @@
-package com.prometheus.ToDoList.controller;
+package com.prometheus.ToDoList.restController;
 
 
 import com.prometheus.ToDoList.db.service.api.TaskService;
@@ -11,10 +11,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("task")
-public class TaskController {
+public class RestTaskController {
 
     private final TaskService taskService;
-    public TaskController (TaskService taskService){
+    public RestTaskController(TaskService taskService){
         this.taskService = taskService;
     }
 

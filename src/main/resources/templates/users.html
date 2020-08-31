@@ -51,7 +51,7 @@
 <!--        <span th:text="${user.name}">user name</span></li>-->
 
 
-<div class="container mt-2">
+<div class="container">
     <div class="row">
         <div class="col">
             <div class="card mb-3  mt-5">
@@ -68,18 +68,20 @@
                                     <th scope="col">Email</th>
                                     <th scope="col">Age</th>
                                     <th scope="col">Password</th>
-<!--                                    <th scope="col"></th>-->
+                                    <th scope="col"></th>
                                 </tr>
                             </thread>
                             <tbody>
-                            <tr class="table-danger" th:each="user : ${users}" >
+                            <tr class="table-info" th:each="user : ${users}" >
                                 <th scope="row" ><span th:text="${user.id}">user id</span></th>
                                 <th ><a href="#" ><span th:text="${user.nickName}">nickname</span></a></th>
                                 <td ><span th:text="${user.name}">name</span></td>
-                                <td class="text-danger" ><span th:text="${user.surname}">surname</span></td>
-                                <td class="text-danger" ><span th:text="${user.email}">email</span></td>
-                                <td class="text-danger" ><span th:text="${user.age}">age</span></td>
-                                <td class="text-danger" ><span th:text="${user.password}">password</span></td>
+                                <td  ><span th:text="${user.surname}">surname</span></td>
+                                <td  ><span th:text="${user.email}">email</span></td>
+                                <td  ><span th:text="${user.age}">age</span></td>
+                                <td  ><span th:text="${user.password}">password</span></td>
+                                <td><a href="#" class="btn btn-sm btn-primary">Edit<i class="far fa-edit ml-1"></i></a> <a href="#" class="text-danger" style="margin-left:5px" title="Delete">
+                                    <i class="far fa-trash-alt ml-1"data-toggle="tooltip" data-placement="right" title="Delete"></i></a></td>
                             </tr>
                             </tbody>
                         </table>

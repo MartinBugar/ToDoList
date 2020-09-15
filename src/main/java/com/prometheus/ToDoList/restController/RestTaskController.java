@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("task")
 public class RestTaskController {
@@ -32,6 +32,11 @@ public class RestTaskController {
     @GetMapping
     public ResponseEntity getAll (){
         List <Task> productTasks = taskService.getTasks();
+        return  new ResponseEntity<>(productTasks,HttpStatus.OK);
+    }
+    @GetMapping("/usertask/{userId}")
+    public ResponseEntity getAllTaskWithUserId (@PathVariable("userId") int userId){
+        List <Task> productTasks = taskService.getTaskByUserId(userId);
         return  new ResponseEntity<>(productTasks,HttpStatus.OK);
     }
 

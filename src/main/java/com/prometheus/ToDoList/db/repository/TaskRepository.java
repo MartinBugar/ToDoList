@@ -42,6 +42,15 @@ public class TaskRepository  {
         }
     }
 
+    public List<Task> getTaskByUserId (Integer userId){
+        final String sql = "select * from task where task.userId = " + userId;
+        try {
+            return jdbcTemplate.query(sql,taskRowMapper);
+        } catch (EmptyResultDataAccessException ex){
+            return null;
+        }
+    }
+
     public Integer add (Task task){
         final String sql = "insert into task (userId, name, status, category, description, createdAt) values (?,?,?,?,?,?)";
 

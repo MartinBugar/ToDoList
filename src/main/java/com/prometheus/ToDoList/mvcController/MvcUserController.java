@@ -24,7 +24,7 @@ public class MvcUserController {
 
 
 
-    @RequestMapping(value = ("/users"), method = RequestMethod.GET)
+    @RequestMapping(value = ("/mvcusers"), method = RequestMethod.GET)
     public String getUserIndex(Model model){
         model.addAttribute("users", userRepository.getAll());
         return "users";

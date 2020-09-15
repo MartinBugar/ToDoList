@@ -10,6 +10,8 @@ public interface TaskService {
 
     Task get(Integer id); // vrati task na zaklade id
 
+    List<Task> getTaskByUserId (Integer userId); // vrati task na zaklade user id
+
     Integer add(Task task); // vracia vygenerovane id
 
     void delete(Integer id); // vymaze task na zaklade jeho id

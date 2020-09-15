@@ -26,6 +26,11 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
+    public List<Task> getTaskByUserId(Integer userId) {
+        return taskRepository.getTaskByUserId(userId);
+    }
+
+    @Override
     public Integer add(Task task) {
         return taskRepository.add(task);
     }

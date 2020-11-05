@@ -53,7 +53,7 @@ public class TaskRepository  {
         }
     }
 
-    public Integer add (Task task){
+    public Integer add (Task task){ // do  metody vstupuje cely objekt task
         final String sql = "insert into task (userId, name, status, category, description, createdAt) values (?,?,?,?,?,?)";
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
@@ -61,13 +61,13 @@ public class TaskRepository  {
             @Override
             public PreparedStatement createPreparedStatement(Connection connection) throws SQLException {
                 PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-                ps.setInt(1,task.getUserId());
+                ps.setInt(1,task.getUserId()); // z objektu ktory vstupil do meotdy sa vyberie userId a vlozi sa do  parameterIndexu 1 v sql prikaze
                 ps.setString(2,task.getName());
                 ps.setInt(3,task.getStatus());
                 ps.setString(4,task.getCategory());
                 ps.setString(5,task.getDescription());
                 ps.setTimestamp(6,task.getCreatedAt());
-                return ps;
+                return ps; // vrati preparedStatement s parametramy z objektu task, ktore su pruradene k jednotlivym parameterIndexom
             }
         }, keyHolder);
         if (keyHolder.getKey() != null){

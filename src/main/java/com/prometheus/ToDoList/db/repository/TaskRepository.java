@@ -33,10 +33,12 @@ public class TaskRepository  {
     }
 
 
+    //taskRowMapper mi na zaklade Stringov ulozenych v databaze vrati cely OBJEKT task
+    //dany objekt, ktory ma byt vrateny je vybrany na zaklade vstupujuceho integeru id do metody
     public Task get (Integer id){
         final String sql = "select * from task where task.id = " + id;
         try {
-            return jdbcTemplate.queryForObject(sql,taskRowMapper);
+            return jdbcTemplate.queryForObject(sql,taskRowMapper);  //vracia OBJEKT TASK
         } catch (EmptyResultDataAccessException ex){
             return null;
         }

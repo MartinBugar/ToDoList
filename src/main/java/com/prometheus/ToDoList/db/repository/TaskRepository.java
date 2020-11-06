@@ -19,16 +19,16 @@ import java.util.List;
 @Component
 public class TaskRepository  {
 
-    private final JdbcTemplate jdbcTemplate;
-    private final TaskRowMapper taskRowMapper = new TaskRowMapper();
+    private final JdbcTemplate jdbcTemplate;//jdbc sa stara a  komunikaciu s databazou
+    private final TaskRowMapper taskRowMapper = new TaskRowMapper(); // premenna row mapper na integraciu dependency injection
 
-    public TaskRepository (JdbcTemplate jdbcTemplate){
+    public TaskRepository (JdbcTemplate jdbcTemplate){ // dependency injection
         this.jdbcTemplate = jdbcTemplate;
     }
 
 
-    public List <Task> getAll (){
-        final String sql = "select * from task";
+    public List <Task> getAll (){ // vrati vsetky dostupne tasky z databazy
+        final String sql = "select * from task"; // sql prikaz
         return jdbcTemplate.query(sql,taskRowMapper);
     }
 
@@ -59,8 +59,8 @@ public class TaskRepository  {
         KeyHolder keyHolder = new GeneratedKeyHolder();
         jdbcTemplate.update(new PreparedStatementCreator() {
             @Override
-            public PreparedStatement createPreparedStatement(Connection connection) throws SQLException {
-                PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            public PreparedStatement createPreparedStatement(Connection connection) throws SQLException { // premenna connection
+                PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS); //returnGeneratedKeys - ked vytvori novy task, tak este vrati id ktore vygenerovalo
                 ps.setInt(1,task.getUserId()); // z objektu ktory vstupil do meotdy sa vyberie userId a vlozi sa do  parameterIndexu 1 v sql prikaze
                 ps.setString(2,task.getName());
                 ps.setInt(3,task.getStatus());
@@ -69,9 +69,10 @@ public class TaskRepository  {
                 ps.setTimestamp(6,task.getCreatedAt());
                 return ps; // vrati preparedStatement s parametramy z objektu task, ktore su pruradene k jednotlivym parameterIndexom
             }
-        }, keyHolder);
+        }, keyHolder); //vytvoreny keyholder vlozime ako druhy parameter do metody update
         if (keyHolder.getKey() != null){
-            return keyHolder.getKey().intValue();
+            return keyHolder.getKey().intValue(); // ak sa podarilo to vlozenie tak mi vrati vygenerovany key - teda id toho tasku,  kedze chceme aby
+            //....metoda add vratisla Integer, tak nam vrati id toho tasku ktory zoberie z keyholdera
         } else {
             return null;
         }
